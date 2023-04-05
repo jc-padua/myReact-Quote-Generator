@@ -1,4 +1,4 @@
-export default function QuoteCard({ text, author }) {
+export default function QuoteCard({ text, author, onTweetQuote }) {
   return (
     <>
       <div className="card" style={{ width: '100%' }}>
@@ -10,7 +10,11 @@ export default function QuoteCard({ text, author }) {
           </p>
         </div>
         <div className="card-footer text-center">
-          <a href="#" className="btn btn-primary">
+          <a
+            href="#"
+            className="btn btn-primary"
+            onClick={() => onTweetQuote(text, author)}
+          >
             Tweet this
           </a>
         </div>

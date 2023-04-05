@@ -31,10 +31,15 @@ function App() {
     setRandomQuote(threeQuotes);
   }
 
+  function tweetQuote(text, author) {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${text} - ${author}`;
+    window.open(twitterUrl, '_blank');
+  }
+
   return (
     <div className="container">
       <h1 className="text-center mt-5">ReactJS Quote Generator</h1>
-      <QuoteCardList quote={randomQuotes} />
+      <QuoteCardList quote={randomQuotes} onTweetQuote={tweetQuote} />
       <QuoteGenerate onGenerateQuote={handleGenerateQuote} />
     </div>
   );

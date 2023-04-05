@@ -1,21 +1,25 @@
 import QuoteCard from './QuoteCard';
 
-export default function QuoteCardList({ quote }) {
+export default function QuoteCardList({ quote, onTweetQuote }) {
   if (quote.length === 0) {
-    return <p>Loading...</p>;
+    return (
+      <p className="text-center mt-4">
+        Click `Generate Quote` to display quotes
+      </p>
+    );
   }
 
   return (
     <div className="row d-flex justify-content-center gap-5 mt-5 mb-5">
-      <div className="col-sm-6 col-md-4 col-lg-3">
-        <QuoteCard key={0} text={quote[0].text} author={quote[0].author} />
-      </div>
-      <div className="col-sm-6 col-md-4 col-lg-3">
-        <QuoteCard key={1} text={quote[1].text} author={quote[1].author} />
-      </div>
-      <div className="col-sm-6 col-md-4 col-lg-3">
-        <QuoteCard key={2} text={quote[2].text} author={quote[2].author} />
-      </div>
+      {quote.map((item, i) => (
+        <div className="col-sm-6 col-md-4 col-lg-3" key={i}>
+          <QuoteCard
+            text={item.text}
+            author={item.author}
+            onTweetQuote={onTweetQuote}
+          />
+        </div>
+      ))}
     </div>
   );
 }
